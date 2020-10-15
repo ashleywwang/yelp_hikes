@@ -1,0 +1,159 @@
+<%- include("partials/header") %>
+<div class="container">
+	<h1>Add New Trail</h1>
+	<h5>Tell us about any new trails we don't have on our radar, so other explorers can learn about it too!</h5>
+	<form action="/trails" method="POST">
+		<div class="form-row">
+			<div class="form-group col-md-8">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" name="name" placeholder="e.g. Lands End Trail" autofocus>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="length">Length (mi)</label>
+				<input type="text" class="form-control" name="length" placeholder="e.g. 3.4">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="description">Description</label>
+			<input type="text" class="form-control" name="description" placeholder="e.g. Lands End's trail offers spectacular views of the shore, headlands, and Golden Gate...">
+		</div>
+
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="city">City</label>
+			<input type="text" class="form-control" name="city" placeholder="e.g. San Francisco">
+		</div>
+		<div class="form-group col-md-4">
+			<label for="state">State</label>
+			<select class="form-control" name="state">
+				<option disabled selected>- Select -</option>
+				<option value="AL">Alabama</option>
+				<option value="AK">Alaska</option>
+				<option value="AZ">Arizona</option>
+				<option value="AR">Arkansas</option>
+				<option value="CA">California</option>
+				<option value="CO">Colorado</option>
+				<option value="CT">Connecticut</option>
+				<option value="DE">Delaware</option>
+				<option value="DC">District Of Columbia</option>
+				<option value="FL">Florida</option>
+				<option value="GA">Georgia</option>
+				<option value="HI">Hawaii</option>
+				<option value="ID">Idaho</option>
+				<option value="IL">Illinois</option>
+				<option value="IN">Indiana</option>
+				<option value="IA">Iowa</option>
+				<option value="KS">Kansas</option>
+				<option value="KY">Kentucky</option>
+				<option value="LA">Louisiana</option>
+				<option value="ME">Maine</option>
+				<option value="MD">Maryland</option>
+				<option value="MA">Massachusetts</option>
+				<option value="MI">Michigan</option>
+				<option value="MN">Minnesota</option>
+				<option value="MS">Mississippi</option>
+				<option value="MO">Missouri</option>
+				<option value="MT">Montana</option>
+				<option value="NE">Nebraska</option>
+				<option value="NV">Nevada</option>
+				<option value="NH">New Hampshire</option>
+				<option value="NJ">New Jersey</option>
+				<option value="NM">New Mexico</option>
+				<option value="NY">New York</option>
+				<option value="NC">North Carolina</option>
+				<option value="ND">North Dakota</option>
+				<option value="OH">Ohio</option>
+				<option value="OK">Oklahoma</option>
+				<option value="OR">Oregon</option>
+				<option value="PA">Pennsylvania</option>
+				<option value="RI">Rhode Island</option>
+				<option value="SC">South Carolina</option>
+				<option value="SD">South Dakota</option>
+				<option value="TN">Tennessee</option>
+				<option value="TX">Texas</option>
+				<option value="UT">Utah</option>
+				<option value="VT">Vermont</option>
+				<option value="VA">Virginia</option>
+				<option value="WA">Washington</option>
+				<option value="WV">West Virginia</option>
+				<option value="WI">Wisconsin</option>
+				<option value="WY">Wyoming</option>
+			</select>
+		</div>
+		<div class="form-group col-md-2">
+			<label for="zip_code">Zip Code</label>
+			<input type="text" maxlength="5" pattern="\d{5}" class="form-control" name="zip_code" placeholder="e.g. 94121">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="route_type">Route Type</label>
+		<select class="form-control" name="route_type">
+				<option disabled selected>- Select -</option>
+				<option value="Loop">Loop (starts and ends at the same location in a loop)</option>
+				<option value="Out-and-Back">Out-and-Back (follows a trail to an end point and then returns along the same route)</option>
+				<option value="Point-to-Point">Point-to-Point (starts and ends in different locations)</option>
+		</select>
+	</div>	
+		
+	<div class="form-group">
+		<label for="activities">Type of activity (choose one or more)</label>
+		<select multiple class="form-control" name="activities" size="3">
+			<option value="Hiking">Hiking trail</option>
+			<option value="Park">Park</option>
+			<option value="Biking">Bike trail</option>
+		</select>
+	</div>
+		
+	<div class="form-group">
+    	<label for="image_link">Link to Image</label>
+    	<input type="text" class="form-control" name="image_link" placeholder="https://www.myimage.com">
+	</div>
+		
+	<div class="form-group" name="radios">
+		<label for="radios">Difficulty Level</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="difficulty_radios"
+				id="difficulty_radios1"
+				value="Beginner"
+				checked
+			>
+			<label class="form-check-label" for="difficulty_radios1">
+				Beginner
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="difficulty_radios"
+				id="difficulty_radios2"
+				value="Intermediate"
+			>
+			<label class="form-check-label" for="difficulty_radios2">
+				Intermediate
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="difficulty_radios"
+				id="difficulty_radios3"
+				value="Advanced"
+			>
+			<label class="form-check-label" for="difficulty_radios3">
+				Advanced
+			</label>
+		</div>
+	</div>
+		
+	<button type="submit" class="btn btn-outline-success">SUBMIT</button>
+	</form>    
+</div>
+
+<%- include("partials/footer") %>

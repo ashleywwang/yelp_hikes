@@ -1,0 +1,160 @@
+<%- include("partials/header") %>
+<div class="container">
+	<h1>Edit Trail</h1>
+	<h5>Thank you for helping to keep our community well-informed.</h5>
+	<form action="/trails/<%= trail._id %>?_method=PUT" method="POST">
+		<div class="form-row">
+			<div class="form-group col-md-8">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" name="name" value="<%= trail.name %>">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="length">Length (mi)</label>
+				<input type="text" class="form-control" name="length" value="<%= trail.length %>">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="description">Description</label>
+			<input type="text" class="form-control" name="description" value="<%= trail.description %>">
+		</div>
+
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="city">City</label>
+			<input type="text" class="form-control" name="city" value="<%= trail.city %>">
+		</div>
+		<div class="form-group col-md-4">
+			<label for="state">State</label>
+			<select class="form-control" name="state">
+				<option disabled>- Select -</option>
+				<option value="AK" <%= trail.state === "AK" ? 'selected' : '' %>>Alaska</option>
+				<option value="AZ" <%= trail.state === "AZ" ? 'selected' : '' %>>Arizona</option>
+				<option value="AR" <%= trail.state === "AR" ? 'selected' : '' %>>Arkansas</option>
+				<option value="CA" <%= trail.state === "CA" ? 'selected' : '' %>>California</option>
+				<option value="CO" <%= trail.state === "CO" ? 'selected' : '' %>>Colorado</option>
+				<option value="CT" <%= trail.state === "CT" ? 'selected' : '' %>>Connecticut</option>
+				<option value="DE" <%= trail.state === "DE" ? 'selected' : '' %>>Delaware</option>
+				<option value="DC" <%= trail.state === "DC" ? 'selected' : '' %>>District Of Columbia</option>
+				<option value="FL" <%= trail.state === "FL" ? 'selected' : '' %>>Florida</option>
+				<option value="GA" <%= trail.state === "GA" ? 'selected' : '' %>>Georgia</option>
+				<option value="HI" <%= trail.state === "HI" ? 'selected' : '' %>>Hawaii</option>
+				<option value="ID" <%= trail.state === "ID" ? 'selected' : '' %>>Idaho</option>
+				<option value="IL" <%= trail.state === "IL" ? 'selected' : '' %>>Illinois</option>
+				<option value="IN" <%= trail.state === "IN" ? 'selected' : '' %>>Indiana</option>
+				<option value="IA" <%= trail.state === "IA" ? 'selected' : '' %>>Iowa</option>
+				<option value="KS" <%= trail.state === "KS" ? 'selected' : '' %>>Kansas</option>
+				<option value="KY" <%= trail.state === "KY" ? 'selected' : '' %>>Kentucky</option>
+				<option value="LA" <%= trail.state === "LA" ? 'selected' : '' %>>Louisiana</option>
+				<option value="ME" <%= trail.state === "ME" ? 'selected' : '' %>>Maine</option>
+				<option value="MD" <%= trail.state === "MD" ? 'selected' : '' %>>Maryland</option>
+				<option value="MA" <%= trail.state === "MA" ? 'selected' : '' %>>Massachusetts</option>
+				<option value="MI" <%= trail.state === "MI" ? 'selected' : '' %>>Michigan</option>
+				<option value="MN" <%= trail.state === "MN" ? 'selected' : '' %>>Minnesota</option>
+				<option value="MS" <%= trail.state === "MS" ? 'selected' : '' %>>Mississippi</option>
+				<option value="MO" <%= trail.state === "MO" ? 'selected' : '' %>>Missouri</option>
+				<option value="MT" <%= trail.state === "MT" ? 'selected' : '' %>>Montana</option>
+				<option value="NE" <%= trail.state === "NE" ? 'selected' : '' %>>Nebraska</option>
+				<option value="NV" <%= trail.state === "NV" ? 'selected' : '' %>>Nevada</option>
+				<option value="NH" <%= trail.state === "NH" ? 'selected' : '' %>>New Hampshire</option>
+				<option value="NJ" <%= trail.state === "NJ" ? 'selected' : '' %>>New Jersey</option>
+				<option value="NM" <%= trail.state === "NM" ? 'selected' : '' %>>New Mexico</option>
+				<option value="NY" <%= trail.state === "NY" ? 'selected' : '' %>>New York</option>
+				<option value="NC" <%= trail.state === "NC" ? 'selected' : '' %>>North Carolina</option>
+				<option value="ND" <%= trail.state === "ND" ? 'selected' : '' %>>North Dakota</option>
+				<option value="OH" <%= trail.state === "OH" ? 'selected' : '' %>>Ohio</option>
+				<option value="OK" <%= trail.state === "OK" ? 'selected' : '' %>>Oklahoma</option>
+				<option value="OR" <%= trail.state === "OR" ? 'selected' : '' %>>Oregon</option>
+				<option value="PA" <%= trail.state === "PA" ? 'selected' : '' %>>Pennsylvania</option>
+				<option value="RI" <%= trail.state === "RI" ? 'selected' : '' %>>Rhode Island</option>
+				<option value="SC" <%= trail.state === "SC" ? 'selected' : '' %>>South Carolina</option>
+				<option value="SD" <%= trail.state === "SD" ? 'selected' : '' %>>South Dakota</option>
+				<option value="TN" <%= trail.state === "TN" ? 'selected' : '' %>>Tennessee</option>
+				<option value="TX" <%= trail.state === "TX" ? 'selected' : '' %>>Texas</option>
+				<option value="UT" <%= trail.state === "UT" ? 'selected' : '' %>>Utah</option>
+				<option value="VT" <%= trail.state === "VT" ? 'selected' : '' %>>Vermont</option>
+				<option value="VA" <%= trail.state === "VA" ? 'selected' : '' %>>Virginia</option>
+				<option value="WA" <%= trail.state === "WA" ? 'selected' : '' %>>Washington</option>
+				<option value="WV" <%= trail.state === "WV" ? 'selected' : '' %>>West Virginia</option>
+				<option value="WI" <%= trail.state === "WI" ? 'selected' : '' %>>Wisconsin</option>
+				<option value="WY" <%= trail.state === "WY" ? 'selected' : '' %>>Wyoming</option>
+			</select>
+		</div>
+		<div class="form-group col-md-2">
+			<label for="zip_code">Zip Code</label>
+			<input type="text" maxlength="5" pattern="\d{5}" class="form-control" name="zip_code" value="<%= trail.zip_code %>">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="route_type">Route Type</label>
+		<select class="form-control" name="route_type">
+				<option disabled>- Select -</option>
+				<option value="Loop" <%= trail.route_type === "Loop" ? 'selected' : '' %>>Loop (starts and ends at the same location in a loop)</option>
+				<option value="Out-and-Back" <%= trail.route_type === "Out-and-Back" ? 'selected' : '' %>>Out-and-Back (follows a trail to an end point and then returns along the same route)</option>
+				<option value="Point-to-Point" <%= trail.route_type === "Point-to-Point" ? 'selected' : '' %>>Point-to-Point (starts and ends in different locations)</option>
+		</select>
+	</div>	
+		
+	<div class="form-group">
+		<label for="activities">Type of activity (choose one or more)</label>
+		<select multiple class="form-control" name="activities" size="3">
+			<option value="Hiking" <%= trail.activities.includes("Hiking") ? 'selected' : '' %>>Hiking trail</option>
+			<option value="Park" <%= trail.activities.includes("Park") ? 'selected' : '' %>>Park</option>
+			<option value="Biking" <%= trail.activities.includes("Biking") ? 'selected' : '' %>>Bike trail</option>
+		</select>
+	</div>
+		
+	<div class="form-group">
+    	<label for="image_link">Link to Image</label>
+    	<input type="text" class="form-control" name="image_link" value="<%= trail.image_link %>">
+	</div>
+		
+	<div class="form-group" name="radios">
+		<label for="radios">Difficulty Level</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="difficulty_radios"
+				id="difficulty_radios1"
+				value="Beginner"
+				<%= trail.difficulty === "Beginner" ? 'checked' : '' %>
+			>
+			<label class="form-check-label" for="difficulty_radios1">
+				Beginner
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="difficulty_radios"
+				id="difficulty_radios2"
+				value="Intermediate"
+				<%= trail.difficulty === "Intermediate" ? 'checked' : '' %>
+			>
+			<label class="form-check-label" for="difficulty_radios2">
+				Intermediate
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="difficulty_radios"
+				id="difficulty_radios3"
+				value="Advanced"
+				<%= trail.difficulty === "Advanced" ? 'checked' : '' %>
+			>
+			<label class="form-check-label" for="difficulty_radios3">
+				Advanced
+			</label>
+		</div>
+	</div>
+		
+	<button type="submit" class="btn btn-outline-success">SUBMIT</button>
+	</form>    
+</div>
+
+<%- include("partials/footer") %>

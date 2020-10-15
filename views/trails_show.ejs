@@ -1,0 +1,81 @@
+<%- include("partials/header") %>
+
+<div class="container">
+	<div class="row mt-4">
+		<div class="col-6 show_image-container">
+			<img class="img-fluid" src="<%= trail.image_link %>">
+		</div>
+		<div class="col-6 show_details-container">
+			<h1><%= trail.name %></h1>
+			<p><%= trail.description %></p>
+			<table class="table">
+			  <tbody>
+				<tr>
+				  <th scope="row">Location</th>
+				  <td><%= trail.city + ", " + trail.state + " " + trail.zip_code %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Length</th>
+				  <td><%= trail.length + " mi." %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Route Type</th>
+				  <td><%= trail.route_type %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Difficulty</th>
+				  <td><%= trail.difficulty %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Activities</th>
+				  <td><%= trail.activities.join(", ") %></td>
+				</tr>
+			  </tbody>
+			</table>
+			
+			<!-- Edit Button -->
+			<a href="/trails/<%= trail._id %>/edit">
+				<button class="btn btn-outline-success btn-sm btn-block mb-2">
+					EDIT TRAIL INFO
+				</button>
+			</a>
+			
+			<!-- Delete Button (cannot be an <a> tag because not GET request) -->
+			<form action="/trails/<%= trail._id %>?_method=DELETE" method="POST">
+				<button type="submit" class="btn btn-outline-danger btn-sm btn-block">
+					DELETE
+				</button>
+			</form>
+		</div>
+	</div>
+	<div class="row show_comment-header mt-3">
+		COMMENT HEADER
+	</div>
+	<!-- New Comment Button -->
+	<a href="/trails/<%= trail._id %>/comments/new">
+		<button class="btn btn-success btn-sm mb-4 mt-3">
+			ADD COMMENT
+		</button>
+	</a>
+	<% comments.forEach((comment) => { %>
+		<div class="row show_comment-container py-2 border">
+			<div class="col-2 my-auto">
+				<%= comment.user.username %>
+			</div>
+			<!-- Edit & Delete Comment Buttons Column -->
+			<div class="col-2 border-right border-left my-auto d-flex flex-wrap justify-content-center">
+				<a class="btn btn-sm btn-outline-success w-75 p-0 my-1" href="/trails/<%= trail._id %>/comments/<%= comment._id %>/edit"><i class="far fa-edit"></i> EDIT</a>
+				<form class="w-75 my-1" action="/trails/<%= trail._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+					<button class="btn btn-sm btn-outline-danger w-100 p-0"><i class="fas fa-minus-circle"></i> DELETE
+					</button>
+				</form>
+			</div>
+			<div class="col-8">
+				<%= comment.text %>
+			</div>
+		</div>
+	<% }) %>
+	
+</div>
+
+<%- include("partials/footer") %>

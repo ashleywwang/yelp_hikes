@@ -1,0 +1,33 @@
+<%- include("partials/header") %>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4" id="jumbo_title">Explore your next hike.</h1>
+			<p class="lead"></p>
+			<form class="form-inline my-2 my-lg-0" action="/trails/search" method="GET">
+      			<input class="form-control mr-sm-2 w-25" type="search" placeholder="Enter a city, trail, or difficulty" name="term" aria-label="Search">
+      			<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+    		</form>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row mt-2">
+			<% trails.forEach((trail) => { %>
+				<div class="card m-3">
+					<a href="/trails/<%= trail._id %>">
+						<img class="card-img card-img-top" src="<%= trail.image_link %>" alt="Picture of <%= trail.name %>">
+					</a>
+					<h3 class="card-name mt-3"><%= trail.name %></h3>
+					<% if (trail.difficulty === "Beginner") { %>
+						<a href="#" class="badge badge-pill badge-success"><%= trail.difficulty %></a>
+					<% } else if (trail.difficulty === "Intermediate") { %>
+						<a href="#" class="badge badge-pill badge-info"><%= trail.difficulty %></a>
+					<% } else { %>
+						<a href="#" class="badge badge-pill badge-secondary"><%= trail.difficulty %></a>
+					<% } %>
+					<p class="card-text mb-3 mx-3 mt-2"><%= trail.description %></p>
+				</div>
+			<% }) %>
+		</div>
+		
+	</div>
+<%- include("partials/footer") %>
